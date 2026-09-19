@@ -1,0 +1,36 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+ENV/
+*.egg-info/
+dist/
+build/
+
+# Airflow
+airflow/logs/
+airflow/dags/__pycache__/
+airflow.db
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Environment variables
+.env
+.env.local
+
+# Data files
+*.csv
+*.parquet
+*.json
+
+# AWS
+.aws/credentials
+.aws/config
