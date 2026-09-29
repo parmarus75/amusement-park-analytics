@@ -11,10 +11,10 @@ default_args = {
 
 def extract_table(table_name, **context):
     hook = PostgresHook(postgres_conn_id='orlando_postgres')
-    records = hook.get_records(f"SELECT COUNT(*) FROM {table_name}")
-    row_count = records[0][0]
-    print(f"Table '{table_name}' has {row_count} rows")
-    return row_count
+    df = hook.get_pandas_df(f"SELECT * FROM {table_name}")
+    output_path = f"/opt/airflow/dags/data/{table_name}.csv"
+    df.to_csv(output_path, index=False)
+    print(f"Saved {len(df)} rows from '{table_name}' to {output_path}")
 
 with DAG(
     dag_id='extract_park_data',
